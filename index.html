@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d0d0b" />
+  <meta name="description" content="Iron Lotus — a hand-inked card martial arts campaign. Build your deck, break your rivals' posture, and master the ten trials." />
+  <title>IRON LOTUS — A Card Martial Arts Saga</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230d0d0b'/%3E%3Ccircle cx='32' cy='32' r='19' fill='%23b23a2f'/%3E%3Cpath d='M32 16c8 6 8 26 0 32-8-6-8-26 0-32z' fill='%23e8dcc3'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div id="title-screen" class="screen screen-title active" aria-label="Title screen">
+    <div class="title-scene" aria-hidden="true">
+      <div class="sun"></div>
+      <div class="mountains m1"></div>
+      <div class="mountains m2"></div>
+      <div class="bamboo b-left"></div>
+      <div class="bamboo b-right"></div>
+      <div class="ink-figure figure-a"></div>
+      <div class="ink-figure figure-b"></div>
+      <div class="embers" id="embers"></div>
+    </div>
+    <div class="title-content">
+      <p class="eyebrow">A hand-inked card saga</p>
+      <h1 class="game-logo"><span>IRON</span><span>LOTUS</span></h1>
+      <div class="title-seal" aria-hidden="true">武</div>
+      <p class="title-sub">Ten rivals. One path. Break the lotus, or bloom.</p>
+      <div class="title-actions">
+        <button class="btn btn-primary btn-lg" id="btn-continue" hidden>Continue the Path</button>
+        <button class="btn btn-primary btn-lg" id="btn-new">Begin the Path</button>
+        <button class="btn btn-ghost" id="btn-how">How to Fight</button>
+      </div>
+      <div class="title-foot">
+        <button class="icon-btn" id="btn-sound-title" aria-label="Toggle sound">SOUND: ON</button>
+        <span class="title-credit">IRON LOTUS · A campaign in four chapters</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="map-screen" class="screen screen-map" aria-label="Campaign map">
+    <header class="topbar">
+      <div class="brand" id="brand-home">
+        <span class="brand-mark">蓮</span>
+        <span class="brand-text">IRON LOTUS</span>
+      </div>
+      <div class="topbar-meta">
+        <span class="meta-chip" id="map-insight">0 insight</span>
+        <button class="icon-btn" id="btn-help" aria-label="How to play">?</button>
+        <button class="icon-btn" id="btn-sound" aria-label="Toggle sound">SOUND</button>
+        <button class="icon-btn" id="btn-title" aria-label="Return to title">EXIT</button>
+      </div>
+    </header>
+    <main class="map-layout">
+      <aside class="profile-panel" id="profile-panel" aria-label="Fighter profile"></aside>
+      <div class="campaign-wrap">
+        <div class="campaign-intro">
+          <p class="eyebrow">The Ten Trials of the Iron Lotus</p>
+          <h2 class="campaign-title">The Long Road</h2>
+          <p class="campaign-copy" id="campaign-copy">A faded map marks ten martial artists who guard the petals of the Iron Lotus. Defeat each one. Learn their ways. Carry your scars forward.</p>
+        </div>
+        <div id="campaign"></div>
+        <div class="map-actions">
+          <button class="btn btn-ghost" id="btn-deck">Your Deck</button>
+          <button class="btn btn-ghost" id="btn-dojo">The Dojo</button>
+        </div>
+      </div>
+    </main>
+    <div class="mobile-actions">
+      <button class="btn btn-ghost" id="btn-deck-m">Deck</button>
+      <button class="btn btn-ghost" id="btn-dojo-m">Dojo</button>
+      <button class="btn btn-ghost" id="btn-rest-m">Rest</button>
+    </div>
+  </div>
+
+  <div id="battle-screen" class="screen screen-battle" aria-label="Battle">
+    <div class="battle-layout">
+      <div class="arena-shell" id="arena-shell">
+        <canvas id="arena" aria-hidden="true"></canvas>
+        <div class="arena-shade" aria-hidden="true"></div>
+        <div class="hud-row">
+          <div class="hud hud-player" id="hud-player"></div>
+          <div class="turn-medallion" id="turn-medallion">I</div>
+          <div class="hud hud-enemy" id="hud-enemy"></div>
+        </div>
+        <div class="intent-wrap" id="intent-wrap" aria-live="polite"></div>
+        <div class="banner-layer" id="banner-layer" aria-live="assertive"></div>
+        <div class="float-layer" id="float-layer" aria-hidden="true"></div>
+        <button class="icon-btn battle-exit" id="btn-forfeit" aria-label="Forfeit battle">✕</button>
+      </div>
+      <div class="battle-panel">
+        <div class="battle-meta">
+          <div class="chi-wrap">
+            <span class="chi-label">氣 CHI</span>
+            <div class="chi-pips" id="chi-pips"></div>
+          </div>
+          <div class="flow-wrap" id="flow-wrap"></div>
+          <div class="pile-info" id="pile-info"></div>
+          <button class="btn btn-endturn" id="btn-endturn">End Turn <kbd>E</kbd></button>
+        </div>
+        <div class="battle-log" id="battle-log"><span>Choose a technique.</span></div>
+        <div class="hand" id="hand" aria-label="Your hand"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
